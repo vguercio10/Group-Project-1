@@ -4,3 +4,13 @@
 // }).then(function(response){
 //     console.log(response);
 // })
+
+ingredients = [ ];
+recipes = [ ];
+
+$("#submit-button").on("click", function(){
+    event.preventDefault();
+    recipes.push($("#input").val());
+
+});
+
