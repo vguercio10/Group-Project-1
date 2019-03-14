@@ -23,6 +23,8 @@ $("#submit-button").on("click", function(){
     // }).then(function(response){
     //     console.log(response);
     // })
+    event.preventDefault();
+    recipes.push($("#input").val());
     updatePage();
 })
 
