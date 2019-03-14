@@ -34,4 +34,18 @@ function updatePage(){
     $("#recipe").text(recipeText);
 }
 
+
+var database = firebase.database();
+database.ref().push({
+    ingredients: ingredients,
+    recipes: recipes,
+})
+
+database.ref().on("value", function(snapshot) {
+var sv = snapshot.val();
+console.log(sv.ingredients);
+console.log(sv.recipes);
+})
+
 updatePage();
+
