@@ -18,20 +18,21 @@ ingredients = [];
 recipes = [];
 
 $("#add-button").click(function(){
-    console.log("clicked");
-    ingredients.push($("#enter-ingredients").val());
-    console.log(ingredients);
-    $("#ingredient-added-list").text(ingredients);
-    $("#enter-ingredients").val(" ");
+    console.log($("#enter-ingredients").val());
+    if($("#enter-ingredients").val() != ""){
+        ingredients.push($("#enter-ingredients").val());
+        $("#ingredient-added-list").text(ingredients + " ");
+        $("#enter-ingredients").val("");
+    }
 })
 
 $("#submit-button").on("click", function () {
-    // $.ajax({
-    //     url: "https://www.food2fork.com/api/get?key=2f1201dc25f3e453a5c909d94d149d44&rId=35382&sort=r",
-    //     method: "GET"
-    // }).then(function(response){
-    //     console.log(response);
-    // })
+    $.ajax({
+        url: "https://www.food2fork.com/api/get?key=2f1201dc25f3e453a5c909d94d149d44&rId=35382&sort=r&q=" + ingredients,
+        method: "GET"
+    }).then(function(response){
+        console.log(response);
+    })
 
     $.ajax({
         url: "https://api.nutritionix.com/v1_1/item?upc=52200004265&appId=044d2156&appKey=a6505bc1a5d010ae2963bc3a56076924",
@@ -43,6 +44,7 @@ $("#submit-button").on("click", function () {
     })
     event.preventDefault();
     recipes.push($("#input").val());
+    ingredients = [];
     updatePage();
 })
 
