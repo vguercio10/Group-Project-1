@@ -37,29 +37,29 @@
 <!--START OF RECIPE PIC AND NUTRITION CARD -->
     <div class="row">
         <div class="col s6"><div class="card-panel teal">
-            <div class="carousel carousel-slider center">
+            <div class="carousel carousel-slider center" id="carousel">
                 <div class="carousel-fixed-item center">
                 </div>
-                <div class="carousel-item red white-text" href="#one!">
+                <div class="carousel-item red white-text" href="#one!" id="car-img-1">
                   <h2>First Panel</h2>
                   <p class="white-text">This is your first panel</p>
                 </div>
-                <div class="carousel-item amber white-text" href="#two!">
+                <div class="carousel-item amber white-text" href="#two!" id="car-img-2">
                   <h2>Second Panel</h2>
                   <p class="white-text">This is your second panel</p>
                 </div>
-                <div class="carousel-item green white-text" href="#three!">
+                <div class="carousel-item green white-text" href="#three!" id="car-img-3">
                   <h2>Third Panel</h2>
                   <p class="white-text">This is your third panel</p>
                 </div>
-                <div class="carousel-item blue white-text" href="#four!">
+                <div class="carousel-item blue white-text" href="#four!" id="car-img-4">
                   <h2>Fourth Panel</h2>
                   <p class="white-text">This is your fourth panel</p>
                 </div>
               </div>
               </div></div>
         <div class="col s6 m5">
-                <div class="card-panel teal">
+                <div class="card-panel teal" id="nutrition-label">
                   <img class="label" src="assets/5bf365fa10acc.image.jpg">
                 </div>
               </div>
@@ -73,14 +73,14 @@
         <div class="col s12"><h3>What Ingredients?</h3></div>
         <div class="col s11"><div class="row">
             <div class="input-field col s12">
-              <textarea id="textarea2" class="materialize-textarea" data-length="120"></textarea>
+              <textarea id="enter-ingredients" class="materialize-textarea" data-length="120"></textarea>
               <label for="textarea2">Enter Ingredients</label>
             </div>
           </div>
         </form></div>
         <div class="col s1 add-icon"><a class="btn-floating btn-medium waves-effect waves-light red add-icon"><i class="material-icons">add</i></a></i></a></div>
         <div class="col s12">
-                <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+                <button class="btn waves-effect waves-light" id="ingredient-submit" type="submit" name="action">Submit
                         <i class="material-icons right">send</i>
                         </button>
                     </div>
@@ -95,15 +95,19 @@
 
 <div class="row">
     <div class="col s6"><div class="card-panel teal">
+            <div id="recipe">
             <span class="white-text">I am a very simple card. I am good at containing small bits of information.
             I am convenient because I require little markup to use effectively. I am similar to what is called a panel in other frameworks.
             </span>
+            </div>
           </div></div>
     <div class="col s6 m5">
             <div class="card-panel teal">
+              <div id="ingredient-added-list">
               <span class="white-text">I am a very simple card. I am good at containing small bits of information.
               I am convenient because I require little markup to use effectively. I am similar to what is called a panel in other frameworks.
               </span>
+            </div>
             </div>
           </div>
 </div>
