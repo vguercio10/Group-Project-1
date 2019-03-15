@@ -1,3 +1,8 @@
+document.addEventListener('DOMContentLoaded', function () {
+    var elems = document.querySelectorAll('.carousel');
+    var instances = M.Carousel.init(elems, options);
+});
+
 // Initialize Firebase
 var config = {
     apiKey: "AIzaSyDGCTv9tkR6r9w-0P9Gz__Xi1FHnAkTAXU",
