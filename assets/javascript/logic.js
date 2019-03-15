@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
     var elems = document.querySelectorAll('.carousel');
-    var instances = M.Carousel.init(elems, options);
+    var instances = M.Carousel.init(elems, 'options');
 });
 
 // Initialize Firebase
@@ -17,8 +17,12 @@ firebase.initializeApp(config);
 ingredients = [];
 recipes = [];
 
-$("#add-button").on("click", function () {
-    ingredients.push($("#input").val());
+$("#add-button").click(function(){
+    console.log("clicked");
+    ingredients.push($("#enter-ingredients").val());
+    console.log(ingredients);
+    $("#ingredient-added-list").text(ingredients);
+    $("#enter-ingredients").val(" ");
 })
 
 $("#submit-button").on("click", function () {
@@ -45,7 +49,7 @@ $("#submit-button").on("click", function () {
 function updatePage() {
     $("#recipe-img").attr("src", "");
     $("#nutrition").attr("src", "");
-    $("#recipe").text(recipeText);
+    $("#recipe").text();
 }
 
 
