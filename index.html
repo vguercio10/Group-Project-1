@@ -20,15 +20,10 @@
   <!-- NAV START -->
   <header>
     <nav>
-
       <div class="nav-wrapper">
         <div class="container">
-          <a href="#" class="brand-logo"><i class="fas fa-brain"></i><i class="fas fa-utensils"></i>Loose Kitchen</a>
-            <div class="nav-wrapper">
-              <a href="#" class="brand-logo center"><i class="fas fa-brain"></i><i class="fas fa-utensils"></i>Loose Kitchen</a>
-              <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a href="sass.html"></a></li>
-              </ul>
+              <a href="#" class="brand-logo center"><span class="flow-text"><i class="fas fa-brain"></i><i class="fas fa-utensils"></i>Loose Kitchen</a>
+              </span>
             </div>
         </div>
     </nav>
@@ -41,25 +36,10 @@
     <div class="row">
       <div class="col s12 m6 6">
         <div class="card-panel teal">
-          <div class="carousel carousel-slider center" id="carousel">
-            <div class="carousel-fixed-item center"></div>
-            <div class="carousel-item red white-text" href="#one!" id="car-img-1">
-              <h2>First Panel</h2>
-              <p class="white-text">This is your first panel</p>
+          <embed id="recipe-image"></embed>
+          <h5 class="white-text">Ingredients Added</h5>
+          <div class="white-text" id="ingredient-added-list">
             </div>
-            <div class="carousel-item amber white-text" href="#two!" id="car-img-2">
-              <h2>Second Panel</h2>
-              <p class="white-text">This is your second panel</p>
-            </div>
-            <div class="carousel-item green white-text" href="#three!" id="car-img-3">
-              <h2>Third Panel</h2>
-              <p class="white-text">This is your third panel</p>
-            </div>
-            <div class="carousel-item blue white-text" href="#four!" id="car-img-4">
-              <h2>Fourth Panel</h2>
-              <p class="white-text">This is your fourth panel</p>
-            </div>
-          </div>
         </div>
       </div>
       <div class="col s12 m6 6">
@@ -68,7 +48,7 @@
         </div>
       </div>
     </div>
-
+<!--CHANGES BLAH VLAH-->
     <!--END OF RECIPE PIC AND NUTRITION CARD -->
 
     <!--INPUT FORM SECTION START-->
@@ -79,14 +59,7 @@
       </div>
       <div id="add-button" class="col s1 add-icon center-align center-align add-button">
         <a class="btn-floating btn-medium waves-effect waves-light red add-icon"><i class="material-icons">add</i></a>
-    <div class="row">
-      <div class="input-field col s11">
-        <textarea id="enter-ingredients" class="materialize-textarea" data-length="120"></textarea>
-        <label for="textarea2">Enter Ingredients</label>
-      </div>
-      <div id="add-button" class="col s1 add-icon">
-        <a class="btn-floating btn-medium waves-effect waves-light red add-icon"><i class="material-icons">add</i></a>
-      </div>
+        </div>
     <div class="row">
       <div class="col s12">
         <button class="btn waves-effect waves-light" id="ingredient-submit" type="submit" name="action">Submit
@@ -94,34 +67,24 @@
         </button>
       </div>
     </div>
-          <!--INPUT FORM SECTION END -->
+<!--INPUT FORM SECTION END -->
 
 
-          <!--RECIPE INGREDIENT START-->
-
+<!--NUTRITION SECTION START-->
     <div class="row">
-      <div class="col s6">
-        <div class="card-panel teal">
-          <div id="recipe">
-            <span class="white-text">I am a very simple card. I am good at containing small bits of information.
-              I am convenient because I require little markup to use effectively. I am similar to what is called a
-              panel in other frameworks.
-            </span>
-          </div>
+      <div class="col s6"><div class="card-panel teal">
+      </div></div>
+      <div class="col s6"> <div class="card-panel teal">
+        <div id="recipe">
+          <span class="white-text">I am a very simple card. I am good at containing small bits of information.
+            I am convenient because I require little markup to use effectively. I am similar to what is called a
+            panel in other frameworks.
+          </span>
         </div>
-      </div>
-      <div class="col s6 m5">
-        <div class="card-panel teal">
-          <div id="ingredient-added-list">
-            <span class="white-text">I am a very simple card. I am good at containing small bits of information.
-                    I am convenient because I require little markup to use effectively. I am similar to what is called a
-                    panel in other frameworks.
-            </span>
-          </div>
-        </div>
-      </div>
+      </div></div>
     </div>
-
+<!--END OF NEW SECTION -->
+  </div>
           <!--RECIPE INGREDIENT END-->
           <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
           <script src="https://www.gstatic.com/firebasejs/5.8.6/firebase.js"></script>
