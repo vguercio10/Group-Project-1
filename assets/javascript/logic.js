@@ -53,7 +53,6 @@ $("#ingredient-submit").click(function (event) {
 function updatePage() {
     $("#car-img-1").attr("src", recipes[recipeIndex].image_url);
     $("#nutrition").attr("src", "");
-    $("#recipe").text(recipes[recipeIndex].);
 }
 
 
