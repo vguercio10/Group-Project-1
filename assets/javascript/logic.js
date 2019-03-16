@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
     var elems = document.querySelectorAll('.carousel');
-    var instances = M.Carousel.init(elems, options);
+    var instances = M.Carousel.init(elems, 'options');
 });
 
 // Initialize Firebase
@@ -17,26 +17,43 @@ firebase.initializeApp(config);
 ingredients = [];
 recipes = [];
 
-$("#add-button").on("click", function(){
-    ingredients.push($("#input").val());
+$("#add-button").click(function(){
+    console.log($("#enter-ingredients").val());
+    if($("#enter-ingredients").val() != ""){
+        ingredients.push($("#enter-ingredients").val());
+        $("#ingredient-added-list").text(ingredients + " ");
+        $("#enter-ingredients").val("");
+    }
 })
 
-$("#submit-button").on("click", function(){
-    // $.ajax({
-    //     url: "https://www.food2fork.com/api/get?key=2f1201dc25f3e453a5c909d94d149d44&rId=35382&sort=r",
-    //     method: "GET"
-    // }).then(function(response){
-    //     console.log(response);
-    // })
+$("#ingredient-submit").click(function(event){
+    console.log(ingredients);
+    $.ajax({
+        url: "https://www.food2fork.com/api/get?key=2f1201dc25f3e453a5c909d94d149d44&rId=35382&sort=r&q=" + ingredients,
+        method: "GET"
+    }).then(function(response){
+        console.log(response);
+        console.log(response.count);
+        recipes = response.recipes;
+        console.log(recipes);
+    })
+
+    $.ajax({
+        url: "https://api.nutritionix.com/v1_1/item?upc=52200004265&appId=044d2156&appKey=a6505bc1a5d010ae2963bc3a56076924",
+        method: "GET"
+    }).then(function (response) {
+
+        console.log(response);
+
+    })
     event.preventDefault();
-    recipes.push($("#input").val());
     updatePage();
 })
 
-function updatePage(){
+function updatePage() {
     $("#recipe-img").attr("src", "");
     $("#nutrition").attr("src", "");
-    $("#recipe").text(recipeText);
+    $("#recipe").text();
 }
 
 
@@ -46,11 +63,11 @@ database.ref().push({
     recipes: recipes,
 })
 
-database.ref().on("value", function(snapshot) {
-var sv = snapshot.val();
-console.log(sv.ingredients);
-console.log(sv.recipes);
-})
+// database.ref().on("value", function (snapshot) {
+//     var sv = snapshot.val();
+//     console.log(sv.ingredients);
+//     console.log(sv.recipes);
+// })
 
 updatePage();
 
