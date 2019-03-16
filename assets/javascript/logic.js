@@ -57,6 +57,27 @@ $("#ingredient-submit").click(function (event) {
     updatePage();
 })
 
+$("#nutrition-submit").click(function(event){
+var settings = {
+    "url": "https://trackapi.nutritionix.com/v2/natural/nutrients",
+    "method": "POST",
+    "timeout": 0,
+    "headers": {
+      "x-app-id": "044d2156",
+      "x-app-key": "fc6e03e57789aa930a4efc1c9a131c43",
+      "x-remote-user-id": "0",
+      "Content-Type": "application/x-www-form-urlencoded"
+    },
+    "data": {
+      "query": "" //<-contents of nutrition input go here
+    }
+  };
+  
+  $.ajax(settings).done(function (response) {
+    console.log(response);
+  });
+})
+
 function updatePage() {
     $("#car-img-1").attr("src", recipes[recipeIndex].image_url);
     $("#nutrition").attr("src", "");
