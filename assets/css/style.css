@@ -5,3 +5,7 @@ body {
 .label {
     height: 400px;
 }
+
+.add-button {
+    margin-top: 20px;
+}
