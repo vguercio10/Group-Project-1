@@ -24,20 +24,13 @@
       <div class="nav-wrapper">
         <div class="container">
           <a href="#" class="brand-logo"><i class="fas fa-brain"></i><i class="fas fa-utensils"></i>Loose Kitchen</a>
-
-        <div class="nav-wrapper">
-            
-          <a href="#" class="brand-logo center"><i class="fas fa-brain"></i><i class="fas fa-utensils"></i>Loose Kitchen</a>
-
-          <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li><a href="sass.html"></a></li>
-          </ul>
-
-          </ul>
-
-            
+            <div class="nav-wrapper">
+              <a href="#" class="brand-logo center"><i class="fas fa-brain"></i><i class="fas fa-utensils"></i>Loose Kitchen</a>
+              <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="sass.html"></a></li>
+              </ul>
+            </div>
         </div>
-      </div>
     </nav>
   </header>
   <!--NAV END -->
@@ -49,8 +42,7 @@
       <div class="col s12 m6 6">
         <div class="card-panel teal">
           <div class="carousel carousel-slider center" id="carousel">
-            <div class="carousel-fixed-item center">
-            </div>
+            <div class="carousel-fixed-item center"></div>
             <div class="carousel-item red white-text" href="#one!" id="car-img-1">
               <h2>First Panel</h2>
               <p class="white-text">This is your first panel</p>
@@ -80,92 +72,61 @@
     <!--END OF RECIPE PIC AND NUTRITION CARD -->
 
     <!--INPUT FORM SECTION START-->
-
-
     <div class="row">
-      <div class="col s12">
-        <h3>What Ingredients?</h3>
+      <div class="input-field col s11">
+        <input type="text" id="enter-ingredients">
+        <label for="textarea2">Enter Ingredients</label>
       </div>
-
-      <div class="col s11">
-        <div class="row">
-          <div class="input-field col s12">
-            <textarea id="enter-ingredients" class="materialize-textarea" data-length="120"></textarea>
-            <label for="textarea2">Enter Ingredients</label>
-          </div>
-        </div>
-        </form>
-      </div>
-      <div class="col s1 add-icon"><a class="btn-floating btn-medium waves-effect waves-light red add-icon"><i
-            class="material-icons">add</i></a></i></a></div>
-      <div class="col s12">
-        <button class="btn waves-effect waves-light" id="ingredient-submit" type="submit" name="action">Get Recipe
-          <i class="fas fa-utensils"></i>
-        </button>
-      </div>
-
-
-<div class="row">
-  <div class="input-field col s11">
-    <input type="text" id="enter-ingredients">
-          <label for="textarea2">Enter Ingredients</label>
-      </div>
-    <div id="add-button" class="col s1 add-icon center-align center-align add-button">
+      <div id="add-button" class="col s1 add-icon center-align center-align add-button">
         <a class="btn-floating btn-medium waves-effect waves-light red add-icon"><i class="material-icons">add</i></a>
-
-
-      <div class="row">
-        <div class="input-field col s11">
-          <textarea id="enter-ingredients" class="materialize-textarea" data-length="120"></textarea>
-          <label for="textarea2">Enter Ingredients</label>
-        </div>
-        <div id="add-button" class="col s1 add-icon">
-          <a class="btn-floating btn-medium waves-effect waves-light red add-icon"><i class="material-icons">add</i></a>
-
-        </div>
+    <div class="row">
+      <div class="input-field col s11">
+        <textarea id="enter-ingredients" class="materialize-textarea" data-length="120"></textarea>
+        <label for="textarea2">Enter Ingredients</label>
       </div>
-
+      <div id="add-button" class="col s1 add-icon">
+        <a class="btn-floating btn-medium waves-effect waves-light red add-icon"><i class="material-icons">add</i></a>
+      </div>
+    <div class="row">
       <div class="col s12">
         <button class="btn waves-effect waves-light" id="ingredient-submit" type="submit" name="action">Submit
           <i class="material-icons right">send</i>
         </button>
       </div>
+    </div>
+          <!--INPUT FORM SECTION END -->
 
 
+          <!--RECIPE INGREDIENT START-->
 
-      <!--INPUT FORM SECTION END -->
-
-
-      <!--RECIPE INGREDIENT START-->
-
-      <div class="row">
-        <div class="col s6">
-          <div class="card-panel teal">
-            <div id="recipe">
-              <span class="white-text">I am a very simple card. I am good at containing small bits of information.
-                I am convenient because I require little markup to use effectively. I am similar to what is called a
-                panel in other frameworks.
-              </span>
-            </div>
-          </div>
-        </div>
-        <div class="col s6 m5">
-          <div class="card-panel teal">
-            <div id="ingredient-added-list">
-              <span class="white-text">I am a very simple card. I am good at containing small bits of information.
-                I am convenient because I require little markup to use effectively. I am similar to what is called a
-                panel in other frameworks.
-              </span>
-            </div>
+    <div class="row">
+      <div class="col s6">
+        <div class="card-panel teal">
+          <div id="recipe">
+            <span class="white-text">I am a very simple card. I am good at containing small bits of information.
+              I am convenient because I require little markup to use effectively. I am similar to what is called a
+              panel in other frameworks.
+            </span>
           </div>
         </div>
       </div>
+      <div class="col s6 m5">
+        <div class="card-panel teal">
+          <div id="ingredient-added-list">
+            <span class="white-text">I am a very simple card. I am good at containing small bits of information.
+                    I am convenient because I require little markup to use effectively. I am similar to what is called a
+                    panel in other frameworks.
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
 
-      <!--RECIPE INGREDIENT END-->
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-      <script src="https://www.gstatic.com/firebasejs/5.8.6/firebase.js"></script>
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-      <script src="assets/javascript/logic.js"></script>
+          <!--RECIPE INGREDIENT END-->
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+          <script src="https://www.gstatic.com/firebasejs/5.8.6/firebase.js"></script>
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+          <script src="assets/javascript/logic.js"></script>
 </body>
 
 </html>
