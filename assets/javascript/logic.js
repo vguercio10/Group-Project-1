@@ -49,8 +49,7 @@ $("#ingredient-submit").click(function (event) {
         dataType: "json",
         method: "GET"
     }).then(function (nutritionix) {
-
-        console.log(nutritionix);
+    console.log(nutritionix);
 
     })
     event.preventDefault();
