@@ -14,10 +14,11 @@ var config = {
 };
 firebase.initializeApp(config);
 
-ingredients = [];
-recipes = [];
-recipeCount = 0;
-recipeIndex = 0;
+var ingredients = [];
+var recipes = [];
+var recipeCount = 0;
+var recipeIndex = 0;
+var embedURL;
 
 $("#add-button").click(function () {
     if ($("#enter-ingredients").val() != "") {
@@ -33,8 +34,14 @@ $("#ingredient-submit").click(function (event) {
         dataType: "json",
         method: "GET"
     }).then(function (food2fork) {
+        console.log(food2fork);
+        embedURL = food2fork.recipes[recipeIndex].f2f_url;
+        console.log(embedURL);
         recipeCount = food2fork.count;
         recipes = food2fork.recipes;
+        $("#recipe-image").attr("src", embedURL);
+        $("#recipe-image").attr("height", "500px");
+        $("#recipe-image").attr("width", "440px");
     })
 
     $.ajax({
@@ -53,6 +60,10 @@ $("#ingredient-submit").click(function (event) {
 function updatePage() {
     $("#car-img-1").attr("src", recipes[recipeIndex].image_url);
     $("#nutrition").attr("src", "");
+    $("#recipe-image").attr("src", embedURL);
+    $("#recipe-image").attr("height", "100px");
+    $("#recipe-image").attr("width", "100px");
+    console.log(embedURL);
 }
 
 
@@ -68,5 +79,5 @@ database.ref().push({
 //     console.log(sv.recipes);
 // })
 
-updatePage();
+// updatePage();
 
