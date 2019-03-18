@@ -1,5 +1,16 @@
+nav {
+    height: 80px;
+    line-height: 80px;
+}
+
+
 body {
     background-color: white;
+}
+
+.logo {
+    width: 85%;
+    margin-top: 5px;
 }
 
 .label {
@@ -13,3 +24,14 @@ body {
 .margin-top {
     margin-top: 25px;
 }
+
+
+/* MEDIA QUERIES */
+
+@media only screen and (max-width: 600px) {
+    nav {
+        height: 70px;
+        line-height: 70px;
+    }
+
+  }
