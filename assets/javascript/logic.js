@@ -19,6 +19,12 @@ var recipes = [];
 var recipeCount = 0;
 var recipeIndex = 0;
 var embedURL;
+var cals = 0;
+var tFat = 0;
+var chol= 0;
+var sodium= 0;
+var tCarb = 0;
+var protein = 0;
 
 $("#add-button").click(function () {
     if ($("#enter-ingredients").val() != "") {
@@ -57,6 +63,7 @@ $("#ingredient-submit").click(function (event) {
 })
 
 $("#nutrition-submit").click(function(event){
+    var input = $("#nutrition-ingredients-").val().trim();
 var settings = {
     "url": "https://trackapi.nutritionix.com/v2/natural/nutrients",
     "method": "POST",
@@ -68,12 +75,27 @@ var settings = {
       "Content-Type": "application/x-www-form-urlencoded"
     },
     "data": {
-      "query": "" //<-contents of nutrition input go here
+      "query": input 
     }
   };
   
   $.ajax(settings).done(function (response) {
     console.log(response);
+    for (var i = 0; i < response.foods.length; i++ ){
+        cals += response.foods[i].nf_calories;
+        tFat += response.foods[i].nf_total_fat;
+        chol += response.foods[i].nf_cholesterol;
+        sodium += response.foods[i].nf_sodium;
+        tCarb += response.foods[i].nf_total_carbohydrate;
+        protein += response.foods[i].nf_protein;
+    }
+        $("#calories").text(cals);
+        $("#fat").text(tFat + "g");
+        $("#chol").text(chol + "mg");
+        $("#sodium").text(sodium + "mg");
+        $("#carbs").text(tCarb + "g");
+        $("#protein").text(protein + "g");
+
   });
 })
 
