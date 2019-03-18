@@ -1,6 +1,28 @@
+/* START MEDIA QUERIES */
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) { .body } 
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) { .body } 
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) { .body } 
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) { .body } 
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) { .body }
+
+
+
+
+/* NAV BAR */
+
 .nav-wrapper {
     
-    opacity: 1;
+  
     background-color: rgba(0,0,0,0.6);
     position: absolute;
     overflow: hidden;
@@ -9,11 +31,14 @@
 }
 
 
+/* BODY */
+
 
 body {
     background-color: white;
     background: url(https://wallpapertag.com/wallpaper/full/1/1/3/317121-new-food-background-2032x1208.jpg);
     background-size: cover;
+    font-family: 'Slabo 27px', serif;
 
 }
 
@@ -25,9 +50,13 @@ body {
     margin-top: 20px;
 }
 
-.page-footer {
+
+/* FOOTER */
+
+
+footer {
     
-    opacity: 1;
+
     background-color: rgba(0,0,0,0.6);
     position: fixed;
     left: 0;
@@ -35,6 +64,5 @@ body {
     height: 40px;
     width: 100%;
     overflow: hidden;
-    clear: bottom;
+    padding-bottom: 15px;
 }
-
