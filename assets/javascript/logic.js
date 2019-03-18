@@ -51,8 +51,8 @@ $("#ingredient-submit").click(function (event) {
         recipeCount = food2fork.count;
         recipes = food2fork.recipes;
         $("#recipe-image").attr("src", embedURL);
-        $("#recipe-image").attr("height", "500px");
-        $("#recipe-image").attr("width", "440px");
+        $("#recipe-image").attr("height", "700px");
+        $("#recipe-image").attr("width", "500px");
     })
 
     $.ajax({
