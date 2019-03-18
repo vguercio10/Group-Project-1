@@ -21,15 +21,20 @@ var recipeCount = 0;
 var recipeIndex = 0;
 var embedURL;
 var cals;
+var tFat;
+var chol;
+var sodium;
+var tCarb;
+var protein;
 database.ref().on("value", function(snapshot){
-cals = snapshot.val().cals;
-console.log(cals);
+    cals = snapshot.val().cals;
+    console.log(cals);
+    tFat = snapshot.val().tFat;
+    chol = snapshot.val().chol;
+    sodium = snapshot.val().sodium;
+    tCarb = snapshot.val().tCarb;
+    protein = snapshot.val().protein;
 })
-var tFat = 0;
-var chol= 0;
-var sodium= 0;
-var tCarb = 0;
-var protein = 0;
 
 $("#add-button").click(function () {
     if ($("#enter-ingredients").val() != "") {
@@ -68,6 +73,7 @@ $("#ingredient-submit").click(function (event) {
 })
 
 $("#nutrition-submit").click(function(event){
+    $("#ingredient-added-list").empty();
     var input = $("#nutrition-ingredients-").val().trim();
 var settings = {
     "url": "https://trackapi.nutritionix.com/v2/natural/nutrients",
@@ -86,6 +92,7 @@ var settings = {
   
   $.ajax(settings).done(function (response) {
     console.log(response);
+
     for (var i = 0; i < response.foods.length; i++ ){
         cals += response.foods[i].nf_calories;
         tFat += response.foods[i].nf_total_fat;
@@ -95,15 +102,6 @@ var settings = {
         protein += response.foods[i].nf_protein;
         console.log(cals);
     }
-
-    database.ref().set({
-        cals: cals,
-        tFat: tFat,
-        chol: chol,
-        sodium: sodium,
-        tCarb: tCarb,
-        protein: protein
-    })
     console.log(cals);
         $("#calories").text(cals);
         $("#fat").text(tFat + "g");
@@ -111,16 +109,21 @@ var settings = {
         $("#sodium").text(sodium + "mg");
         $("#carbs").text(tCarb + "g");
         $("#protein").text(protein + "g");
-        // cals = 0;
-        // tFat = 0;
-        // chol= 0;
-        // sodium= 0;
-        // tCarb = 0;
-        // protein = 0;
+        database.ref().set({
+            cals: cals,
+            tFat: tFat,
+            chol: chol,
+            sodium: sodium,
+            tCarb: tCarb,
+            protein: protein
+        })
+        cals = 0;
+        tFat = 0;
+        chol= 0;
+        sodium= 0;
+        tCarb = 0;
+        protein = 0;
         ingredients = [];
-        $("#ingredient-added-list").empty();
-
-
   });
 })
 
