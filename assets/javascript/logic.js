@@ -20,21 +20,12 @@ var recipes = [];
 var recipeCount = 0;
 var recipeIndex = 0;
 var embedURL;
-var cals;
-var tFat;
-var chol;
-var sodium;
-var tCarb;
-var protein;
-database.ref().on("value", function(snapshot){
-    cals = snapshot.val().cals;
-    console.log(cals);
-    tFat = snapshot.val().tFat;
-    chol = snapshot.val().chol;
-    sodium = snapshot.val().sodium;
-    tCarb = snapshot.val().tCarb;
-    protein = snapshot.val().protein;
-})
+var cals = 0;
+var tFat = 0;
+var chol = 0;
+var sodium = 0;
+var tCarb = 0;
+var protein = 0;
 
 $("#add-button").click(function () {
     if ($("#enter-ingredients").val() != "") {
@@ -51,23 +42,19 @@ $("#ingredient-submit").click(function (event) {
         method: "GET"
     }).then(function (food2fork) {
         console.log(food2fork);
-        embedURL = food2fork.recipes[recipeIndex].f2f_url;
+        embedURL = food2fork.recipes[0].f2f_url;
         console.log(embedURL);
         recipeCount = food2fork.count;
         recipes = food2fork.recipes;
         $("#recipe-image").attr("src", embedURL);
         $("#recipe-image").attr("height", "700px");
-        $("#recipe-image").attr("width", "500px");
+        $("#recipe-image").attr("width", "100%");
+        database.ref().set({
+            embedURL: embedURL
+        })
     })
 
-    $.ajax({
-        url: "https://api.nutritionix.com/v1_1/item?upc=52200004265&appId=044d2156&appKey=a6505bc1a5d010ae2963bc3a56076924",
-        dataType: "json",
-        method: "GET"
-    }).then(function (nutritionix) {
-    console.log(nutritionix);
-
-    })
+    
     event.preventDefault();
     updatePage();
 })
@@ -100,23 +87,18 @@ var settings = {
         sodium += response.foods[i].nf_sodium;
         tCarb += response.foods[i].nf_total_carbohydrate;
         protein += response.foods[i].nf_protein;
+    }   
+
         console.log(cals);
-    }
-    console.log(cals);
-        $("#calories").text(cals);
-        $("#fat").text(tFat + "g");
-        $("#chol").text(chol + "mg");
-        $("#sodium").text(sodium + "mg");
-        $("#carbs").text(tCarb + "g");
-        $("#protein").text(protein + "g");
-        database.ref().set({
-            cals: cals,
-            tFat: tFat,
-            chol: chol,
-            sodium: sodium,
-            tCarb: tCarb,
-            protein: protein
-        })
+        $("#calories").text(Math.round(cals));
+        console.log(tFat);
+        $("#fat").text(Math.round(tFat) + "g");
+        console.log(chol);
+        $("#chol").text(Math.round(chol) + "mg");
+        $("#sodium").text(Math.round(sodium) + "mg");
+        console.log(tCarb);
+        $("#carbs").text(Math.round(tCarb) + "g");
+        $("#protein").text(Math.round(protein) + "g");
         cals = 0;
         tFat = 0;
         chol= 0;
@@ -128,20 +110,15 @@ var settings = {
 })
 
 function updatePage() {
-    console.log("updated Page");
-    // $("#car-img-1").attr("src", recipes[recipeIndex].image_url);
-    // $("#nutrition").attr("src", "");
-    // $("#recipe-image").attr("src", embedURL);
-    // $("#recipe-image").attr("height", "100px");
-    // $("#recipe-image").attr("width", "100px");
-    $("#calories").text(cals);
-console.log(cals);
-    $("#fat").text(tFat + "g");
-    $("#chol").text(chol + "mg");
-    $("#sodium").text(sodium + "mg");
-    $("#carbs").text(tCarb + "g");
-    $("#protein").text(protein + "g");
-    console.log(embedURL);
+
+    database.ref().on("value", function(snapshot){
+        
+        let embedURL = snapshot.val().embedURL;
+        console.log("value changed " + embedURL);
+        $("#recipe-image").attr("src", embedURL);
+        $("#recipe-image").attr("height", "700px");
+        $("#recipe-image").attr("width", "100%");
+    })
 }
 
 // database.ref().on("value", function(snapshot){
