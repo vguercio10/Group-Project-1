@@ -13,17 +13,28 @@ var config = {
     messagingSenderId: "535521502364"
 };
 firebase.initializeApp(config);
+var database = firebase.database();
 
 var ingredients = [];
 var recipes = [];
 var recipeCount = 0;
 var recipeIndex = 0;
 var embedURL;
+var cals;
+database.ref().on("value", function(snapshot){
+cals = snapshot.val().cals;
+console.log(cals);
+})
+var tFat = 0;
+var chol= 0;
+var sodium= 0;
+var tCarb = 0;
+var protein = 0;
 
 $("#add-button").click(function () {
     if ($("#enter-ingredients").val() != "") {
         ingredients.push($("#enter-ingredients").val());
-        $("#ingredient-added-list").text(ingredients + " ");
+        $("#ingredient-added-list").text(ingredients.join(", ").toUpperCase().trim());
         $("#enter-ingredients").val("");
     }
 })
@@ -40,8 +51,8 @@ $("#ingredient-submit").click(function (event) {
         recipeCount = food2fork.count;
         recipes = food2fork.recipes;
         $("#recipe-image").attr("src", embedURL);
-        $("#recipe-image").attr("height", "500px");
-        $("#recipe-image").attr("width", "440px");
+        $("#recipe-image").attr("height", "700px");
+        $("#recipe-image").attr("width", "500px");
     })
 
     $.ajax({
@@ -57,6 +68,7 @@ $("#ingredient-submit").click(function (event) {
 })
 
 $("#nutrition-submit").click(function(event){
+    var input = $("#nutrition-ingredients-").val().trim();
 var settings = {
     "url": "https://trackapi.nutritionix.com/v2/natural/nutrients",
     "method": "POST",
@@ -68,36 +80,90 @@ var settings = {
       "Content-Type": "application/x-www-form-urlencoded"
     },
     "data": {
-      "query": "" //<-contents of nutrition input go here
+      "query": input 
     }
   };
   
   $.ajax(settings).done(function (response) {
     console.log(response);
+    for (var i = 0; i < response.foods.length; i++ ){
+        cals += response.foods[i].nf_calories;
+        tFat += response.foods[i].nf_total_fat;
+        chol += response.foods[i].nf_cholesterol;
+        sodium += response.foods[i].nf_sodium;
+        tCarb += response.foods[i].nf_total_carbohydrate;
+        protein += response.foods[i].nf_protein;
+        console.log(cals);
+    }
+
+    database.ref().set({
+        cals: cals,
+        tFat: tFat,
+        chol: chol,
+        sodium: sodium,
+        tCarb: tCarb,
+        protein: protein
+    })
+    console.log(cals);
+        $("#calories").text(cals);
+        $("#fat").text(tFat + "g");
+        $("#chol").text(chol + "mg");
+        $("#sodium").text(sodium + "mg");
+        $("#carbs").text(tCarb + "g");
+        $("#protein").text(protein + "g");
+        // cals = 0;
+        // tFat = 0;
+        // chol= 0;
+        // sodium= 0;
+        // tCarb = 0;
+        // protein = 0;
+        ingredients = [];
+        $("#ingredient-added-list").empty();
+
+
   });
 })
 
 function updatePage() {
-    $("#car-img-1").attr("src", recipes[recipeIndex].image_url);
-    $("#nutrition").attr("src", "");
-    $("#recipe-image").attr("src", embedURL);
-    $("#recipe-image").attr("height", "100px");
-    $("#recipe-image").attr("width", "100px");
+    console.log("updated Page");
+    // $("#car-img-1").attr("src", recipes[recipeIndex].image_url);
+    // $("#nutrition").attr("src", "");
+    // $("#recipe-image").attr("src", embedURL);
+    // $("#recipe-image").attr("height", "100px");
+    // $("#recipe-image").attr("width", "100px");
+    $("#calories").text(cals);
+console.log(cals);
+    $("#fat").text(tFat + "g");
+    $("#chol").text(chol + "mg");
+    $("#sodium").text(sodium + "mg");
+    $("#carbs").text(tCarb + "g");
+    $("#protein").text(protein + "g");
     console.log(embedURL);
 }
 
-
-var database = firebase.database();
-database.ref().push({
-    ingredients: ingredients,
-    recipes: recipes,
-})
+// database.ref().on("value", function(snapshot){
+//     console.log("value changed");
+//     cals = snapshot.val().cals;
+//     tFat = snapshot.val().tFat;
+//     chol = snapshot.val().chol;
+//     sodium = snapshot.val().sodium;
+//     tCarb = snapshot.val().tCarb;
+//     protein = snapshot.val().protein;
+// })
 
 // database.ref().on("value", function (snapshot) {
 //     var sv = snapshot.val();
+//     database.ref().set({
+//         ingredients: ingredients,
+//         recipes: recipes,
+//     });
 //     console.log(sv.ingredients);
 //     console.log(sv.recipes);
 // })
 
-// updatePage();
+setTimeout(function(){
+    updatePage();
+}, 1000);
+
+
 

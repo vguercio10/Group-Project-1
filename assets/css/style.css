@@ -42,6 +42,11 @@ body {
 
 }
 
+.logo {
+    width: 85%;
+    margin-top: 5px;
+}
+
 .label {
     height: 400px;
 }

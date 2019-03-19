@@ -14,102 +14,154 @@
   <title>Loose Cooking</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
+
+  <script>
+      // show the given page, hide the rest
+      function show(elementID) {
+          // try to find the requested page and alert if it's not found
+          var ele = document.getElementById(elementID);
+          if (!ele) {
+              alert("no such element");
+              return;
+          }
+
+          // get all pages, loop through them and hide them
+          var pages = document.getElementsByClassName('page');
+          for(var i = 0; i < pages.length; i++) {
+              pages[i].style.display = 'none';
+          }
+
+          // then show the requested page
+          ele.style.display = 'block';
+      }
+  </script>
+
 </head>
 
 <body>
-  <!-- NAV START -->
+
+    <p>
+        Show page 
+            <span onclick="show('Page1');">1</span>, 
+            <span onclick="show('Page2');">2</span>, 
+            <span onclick="show('Page3');">3</span>.
+        </p>
+
+    <div id="Page1" class="page" style="">
+        
+       <!-- NAV START -->
 
   <header>
-    <nav>
-      <div class="nav-wrapper">
-        <div class="container">
-              <a href="#" class="brand-logo center"><span class="flow-text"><i class="fas fa-brain"></i><i class="fas fa-utensils"></i>Loose Kitchen</a>
-              </span>
-            </div>
-        </div>
-    </nav>
-  </header>
-
-  <!--NAV END -->
-
-  <div class="container margin-top">
-    <div class="row">
-      <div class="col s12 m6 6">
-        <div class="card-panel white">
-            <div class="row">
-              <h5>Your Recipe</h5>
-              <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempore qui, laborum quod natus ipsum nisi</p>
-                <div class="input-field col s11">
-                  <input type="text" id="nutrition-ingredients-">
-                  <label for="textarea2">Enter Ingredients</label>
-                </div>
-              <div class="row">
-                <div class="col s12">
-                    <button class="btn waves-effect waves-light" id="nutrition-submit" type="submit" name="action">Get Nutrition
-                        <i class="fas fa-utensils"></i>
-                    </button>
-                  <div>
-                      <h6>Nutrition Facts</h6>
-                      <p>Calories: <span id="calories"></span></p>
-                      <p>Total Fat: <span id="fat"></span></p>
-                      <p>Cholesterol: <span id="chol"></span></p>
-                      <p>Sodium: <span id="sodium"></span></p>
-                      <p>Total Carbohydrates <span id="carbs"></span></p>
-                      <p>Protein: <span id="protein"></span></p>
-                    </div>
-                </div>
-                
+      <nav>
+        <div class="nav-wrapper">
+          <div class="container margin-top">
+                <a href="#" class="brand-logo center"><img class="logo" src="assets/Images/loose-kitchen-logo-small.png"></a>
               </div>
-            </div>
-        </div>
-      </div>
-      <div class="col s12 m6 6">
-          <div class="card-panel white">
-            <h5>Add Your Loose Ingredients</h5>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempore qui, laborum quod natus ipsum nisi</p>
-            <div class="row">
-              <div class="input-field col s10">
-                <input type="text" id="enter-ingredients">
-                <label for="textarea2">Enter Ingredients</label>
-                </div>
-                <div id="add-button" class="col s2 add-icon add-button">
-                <a class="btn-floating btn-small waves-effect waves-light red add-icon"><i class="material-icons">add</i></a>
-                </div>
+          </div>
+      </nav>
+    </header>
+  
+    <!--NAV END -->
+  
+    <div class="container margin-top">
+      <div class="row">
+          <div class="col s12 m6 6">
+              <div class="card-panel white">
+                <h5>Add Your Loose Ingredients</h5>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempore qui, laborum quod natus ipsum nisi</p>
                 <div class="row">
-              <div class="col s12">
-                  <button class="btn waves-effect waves-light" id="ingredient-submit" type="submit" name="action">Add Ingredients
-                      <i class="fas fa-utensils"></i>
-                          </button>
-                    <h6>Ingredients Added</h6>
-                      <div class="black-text" id="ingredient-added-list">
+                  <div class="input-field col s10">
+                    <input type="text" id="enter-ingredients">
+                    <label for="textarea2">Enter Ingredients</label>
                     </div>
+                    <div id="add-button" class="col s2 add-icon add-button">
+                    <a class="btn-floating btn-small waves-effect waves-light red add-icon"><i class="material-icons">add</i></a>
+                    </div>
+                    <div class="row">
+                  <div class="col s12">
+                      <button class="btn waves-effect waves-light" id="ingredient-submit" type="submit" name="action">Add Ingredients
+                          <i class="fas fa-utensils"></i>
+                              </button>
+                        <h6>Ingredients Added</h6>
+                          <div class="white-text" id="ingredient-added-list">
+                        </div>
+                        <embed id = "recipe-image"></embed>
+                      </div>
+                    </div>
+                </div>
+          </div>
+        </div>
+        <div class="col s12 m6 6">
+          <div class="card-panel white">
+              <div class="row">
+                <h5>Your Recipe</h5>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempore qui, laborum quod natus ipsum nisi</p>
+                  <div class="input-field col s11">
+                    <input type="text" id="nutrition-ingredients-">
+                    <label for="textarea2">Get Recipe</label>
+                  </div>
+                <div class="row">
+                  <div class="col s12">
+                      <button class="btn waves-effect waves-light" id="nutrition-submit" type="submit" name="action">Get Nutrition
+                          <i class="fas fa-utensils"></i>
+                      </button>
+                    <div>
+                        <h6>Nutrition Facts</h6>
+                        <p>Calories: <span id="calories"></span></p>
+                        <p>Total Fat: <span id="fat"></span></p>
+                        <p>Cholesterol: <span id="chol"></span></p>
+                        <p>Sodium: <span id="sodium"></span></p>
+                        <p>Total Carbohydrates <span id="carbs"></span></p>
+                        <p>Protein: <span id="protein"></span></p>
+                      </div>
                   </div>
                 </div>
-            </div>
-      </div>
-    </div>
-
-  </div>
-<br>
-<br>
-
-
-<!-- FOOTER START -->
-<footer>
-    <nav>
-      <div class="nav-wrapper">
-        <div class="container">
-              <a href="#" class="brand-logo right"><span class="flow-text">Loose Kitchen ©</a><i class="fas fa-brain left"></i><i class="fas fa-utensils left"></i>
-              </span>
-            </div>
+              </div>
+          </div>
         </div>
-    </nav>
-  </footer>
-
-
+        
+                  </div>
+              </div>
+        </div>
+      </div>
+  
+    </div>
+  <br>
+  <br>
+  
+  
+  <!-- FOOTER START -->
+  <footer>
+      <nav>
+        <div class="nav-wrapper">
+          <div class="container">
+                <a href="#" class="brand-logo right"><span class="flow-text">Loose Kitchen ©</a><i class="fas fa-brain left"></i><i class="fas fa-utensils left"></i>
+                </span>
+              </div>
+          </div>
+      </nav>
+    </footer>
 
 
 <!-- FOOTER END -->
+
+
+
+    </div>
+    <div id="Page2" class="page" style="display:none">
+        
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto doloremque voluptate incidunt iusto, quaerat et neque obcaecati repellendus voluptatibus distinctio? Animi tempora ut eaque molestias sint possimus odit molestiae maxime.</p>
+      
+    </div>
+    <div id="Page3" class="page" style="display:none">
+        Content of page 3
+    </div>
+
+ 
+
+
+
+
           <!--RECIPE INGREDIENT ENDS HERE -->
           <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
           <script src="https://www.gstatic.com/firebasejs/5.8.6/firebase.js"></script>
