@@ -2,19 +2,20 @@ nav {
     height: 90px;
 }
 
-.links {
-    float: right;
-    margin: 0;
-    padding: 0;
-}
-
 
 body {
     background-color: white;
     background: url(https://wallpapertag.com/wallpaper/full/1/1/3/317121-new-food-background-2032x1208.jpg);
     background-size: cover;
 
-}
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+  main {
+    flex: 1 0 auto;
+  }
 
 .logo {
     width: 85%;
@@ -53,12 +54,11 @@ body {
 
 footer {
     
-   
     padding: 0;
     bottom: 0;
-    height: 100px;
+    height: auto;
     width: 100%;
-    clear: bottom;
+   
 }
 
 
