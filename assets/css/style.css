@@ -1,7 +1,44 @@
+nav {
+    height: 90px;
+}
+
+
 body {
     background-color: white;
+}
+
+.logo {
+    width: 85%;
+    margin-top: 5px;
 }
 
 .label {
     height: 400px;
 }
+
+.add-button {
+    margin-top: 20px;
+}
+
+.margin-top {
+    margin-top: 25px;
+}
+
+.nutr-logo {
+    width: 125px;
+}
+
+.instructions {
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+
+/* MEDIA QUERIES */
+
+@media only screen and (max-width: 600px) {
+    nav {
+        height: 70px;
+    }
+
+  }
