@@ -26,15 +26,6 @@ var chol;
 var sodium;
 var tCarb;
 var protein;
-database.ref().on("value", function(snapshot){
-    cals = snapshot.val().cals;
-    console.log(cals);
-    tFat = snapshot.val().tFat;
-    chol = snapshot.val().chol;
-    sodium = snapshot.val().sodium;
-    tCarb = snapshot.val().tCarb;
-    protein = snapshot.val().protein;
-})
 
 $("#add-button").click(function () {
     if ($("#enter-ingredients").val() != "") {
@@ -60,14 +51,7 @@ $("#ingredient-submit").click(function (event) {
         $("#recipe-image").attr("width", "500px");
     })
 
-    $.ajax({
-        url: "https://api.nutritionix.com/v1_1/item?upc=52200004265&appId=044d2156&appKey=a6505bc1a5d010ae2963bc3a56076924",
-        dataType: "json",
-        method: "GET"
-    }).then(function (nutritionix) {
-    console.log(nutritionix);
 
-    })
     event.preventDefault();
     updatePage();
 })
@@ -109,14 +93,7 @@ var settings = {
         $("#sodium").text(sodium + "mg");
         $("#carbs").text(tCarb + "g");
         $("#protein").text(protein + "g");
-        database.ref().set({
-            cals: cals,
-            tFat: tFat,
-            chol: chol,
-            sodium: sodium,
-            tCarb: tCarb,
-            protein: protein
-        })
+        
         cals = 0;
         tFat = 0;
         chol= 0;
@@ -129,11 +106,6 @@ var settings = {
 
 function updatePage() {
     console.log("updated Page");
-    // $("#car-img-1").attr("src", recipes[recipeIndex].image_url);
-    // $("#nutrition").attr("src", "");
-    // $("#recipe-image").attr("src", embedURL);
-    // $("#recipe-image").attr("height", "100px");
-    // $("#recipe-image").attr("width", "100px");
     $("#calories").text(cals);
 console.log(cals);
     $("#fat").text(tFat + "g");
@@ -143,26 +115,6 @@ console.log(cals);
     $("#protein").text(protein + "g");
     console.log(embedURL);
 }
-
-// database.ref().on("value", function(snapshot){
-//     console.log("value changed");
-//     cals = snapshot.val().cals;
-//     tFat = snapshot.val().tFat;
-//     chol = snapshot.val().chol;
-//     sodium = snapshot.val().sodium;
-//     tCarb = snapshot.val().tCarb;
-//     protein = snapshot.val().protein;
-// })
-
-// database.ref().on("value", function (snapshot) {
-//     var sv = snapshot.val();
-//     database.ref().set({
-//         ingredients: ingredients,
-//         recipes: recipes,
-//     });
-//     console.log(sv.ingredients);
-//     console.log(sv.recipes);
-// })
 
 setTimeout(function(){
     updatePage();
