@@ -10,6 +10,7 @@ var config = {
 firebase.initializeApp(config);
 var database = firebase.database();
 
+// Global variables 
 var ingredients = [];
 var recipes = [];
 var embedURL;
@@ -20,6 +21,7 @@ var sodium = 0;
 var tCarb = 0;
 var protein = 0;
 
+// Enter and store ingredients
 $("#add-button").click(function(){
     if ($("#enter-ingredients").val() != "") {
         ingredients.push($("#enter-ingredients").val());
@@ -28,6 +30,7 @@ $("#add-button").click(function(){
     }
 })
 
+// Ingredient submit button with Ajax call for recipes, Firebase for last recipe searched
 $("#ingredient-submit").click(function(event){
     $.ajax({
         url: "https://www.food2fork.com/api/search?key=2f1201dc25f3e453a5c909d94d149d44&q=" + ingredients,
@@ -47,7 +50,8 @@ $("#ingredient-submit").click(function(event){
     updatePage();
 })
 
-$("#nutrition-submit").click(function(event){
+// Nutrition submit with Ajax call for nutrional facts
+$("#nutrition-submit").click(function (event) {
     $("#ingredient-added-list").empty();
     var input = $("#nutrition-ingredients-").val().trim();
     var settings = {
@@ -65,6 +69,7 @@ $("#nutrition-submit").click(function(event){
         }
   };
   
+//   Nutrional values added then displayed on page. Rounded numbers.
   $.ajax(settings).done(function(response){
     for (var i = 0; i < response.foods.length; i++ ){
         cals += response.foods[i].nf_calories;
@@ -91,6 +96,7 @@ $("#nutrition-submit").click(function(event){
   });
 })
 
+// Diplay for embeded URL
 function updatePage() {
     database.ref().on("value", function(snapshot){
         let embedURL = snapshot.val().embedURL;
@@ -100,7 +106,6 @@ function updatePage() {
     })  
 }
 
-setTimeout(function(){
+setTimeout(function () {
     updatePage();
 }, 1000);
-
