@@ -39,7 +39,6 @@ body {
 @media only screen and (max-width: 600px) {
     nav {
         height: 70px;
-        line-height: 70px;
     }
 
   }

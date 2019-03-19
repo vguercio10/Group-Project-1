@@ -1,8 +1,3 @@
-document.addEventListener('DOMContentLoaded', function () {
-    var elems = document.querySelectorAll('.carousel');
-    var instances = M.Carousel.init(elems, 'options');
-});
-
 // Initialize Firebase
 var config = {
     apiKey: "AIzaSyDGCTv9tkR6r9w-0P9Gz__Xi1FHnAkTAXU",
@@ -20,6 +15,7 @@ var recipes = [];
 var recipeCount = 0;
 var recipeIndex = 0;
 var embedURL;
+
 var cals = 0;
 var tFat = 0;
 var chol = 0;
@@ -54,7 +50,10 @@ $("#ingredient-submit").click(function (event) {
         })
     })
 
+
     
+
+
     event.preventDefault();
     updatePage();
 })
@@ -90,6 +89,7 @@ var settings = {
     }   
 
         console.log(cals);
+
         $("#calories").text(Math.round(cals));
         console.log(tFat);
         $("#fat").text(Math.round(tFat) + "g");
@@ -99,6 +99,8 @@ var settings = {
         console.log(tCarb);
         $("#carbs").text(Math.round(tCarb) + "g");
         $("#protein").text(Math.round(protein) + "g");
+
+  }
         cals = 0;
         tFat = 0;
         chol= 0;
@@ -111,6 +113,7 @@ var settings = {
 
 function updatePage() {
 
+
     database.ref().on("value", function(snapshot){
         
         let embedURL = snapshot.val().embedURL;
@@ -119,27 +122,9 @@ function updatePage() {
         $("#recipe-image").attr("height", "700px");
         $("#recipe-image").attr("width", "100%");
     })
+
+    
 }
-
-// database.ref().on("value", function(snapshot){
-//     console.log("value changed");
-//     cals = snapshot.val().cals;
-//     tFat = snapshot.val().tFat;
-//     chol = snapshot.val().chol;
-//     sodium = snapshot.val().sodium;
-//     tCarb = snapshot.val().tCarb;
-//     protein = snapshot.val().protein;
-// })
-
-// database.ref().on("value", function (snapshot) {
-//     var sv = snapshot.val();
-//     database.ref().set({
-//         ingredients: ingredients,
-//         recipes: recipes,
-//     });
-//     console.log(sv.ingredients);
-//     console.log(sv.recipes);
-// })
 
 setTimeout(function(){
     updatePage();
