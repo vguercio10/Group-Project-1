@@ -1,6 +1,5 @@
 nav {
-    height: 80px;
-    line-height: 80px;
+    height: 90px;
 }
 
 
@@ -23,6 +22,15 @@ body {
 
 .margin-top {
     margin-top: 25px;
+}
+
+.nutr-logo {
+    width: 125px;
+}
+
+.instructions {
+    margin-right: 20px;
+    margin-left: 20px;
 }
 
 

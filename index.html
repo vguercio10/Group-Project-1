@@ -20,20 +20,26 @@
   <!-- NAV START -->
   <header>
     <nav>
-      <div class="nav-wrapper">
-        <div class="container margin-top">
+      <div class="nav-wrapper brown darken-2">
+          <div class="container">
               <a href="#" class="brand-logo center"><img class="logo" src="assets/Images/loose-kitchen-logo-small.png"></a>
-            </div>
+        </div>
         </div>
     </nav>
   </header>
   <!--NAV END -->
 
   <div class="container margin-top">
+    <div class="instructions">
+        <img class="nutr-logo right" src="assets/Images/NutritionixAPI_hires_flat.png">
+        <p>Lorem ipsum sit amet consectetur adipisicing elit. Eius similique minima repudiandae suscipit ad quo ullam, omnis, assumenda odit alias necessitatibus veniam eum optio animi minus ea! Totam, voluptatem unde?</p>
+  </div>
+
+
     <div class="row">
         <div class="col s12 m6 6">
             <div class="card-panel white">
-              <h5>Add Your Loose Ingredients</h5>
+              <h5>Find A Recipe</h5>
               <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempore qui, laborum quod natus ipsum nisi</p>
               <div class="row">
                 <div class="input-field col s10">
@@ -45,11 +51,11 @@
                   </div>
                   <div class="row">
                 <div class="col s12">
-                    <button class="btn waves-effect waves-light" id="ingredient-submit" type="submit" name="action">Add Ingredients
+                    <button class="btn waves-effect waves-light" id="ingredient-submit" type="submit" name="action">Get Recipe
                         <i class="fas fa-utensils"></i>
                             </button>
                       <h6>Ingredients Added</h6>
-                        <div class="white-text" id="ingredient-added-list">
+                        <div id="ingredient-added-list">
                       </div>
                       <embed></embed>
                     </div>
@@ -60,7 +66,7 @@
       <div class="col s12 m6 6">
         <div class="card-panel white">
             <div class="row">
-              <h5>Your Recipe</h5>
+              <h5>Get Your Nutritional Facts</h5>
               <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempore qui, laborum quod natus ipsum nisi</p>
                 <div class="input-field col s11">
                   <input type="text" id="nutrition-ingredients-">
