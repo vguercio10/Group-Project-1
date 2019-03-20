@@ -31,7 +31,6 @@ $("#ingredient-submit").click(function(event){
         $("#recipe-image").attr("width", "100%");
     })
     event.preventDefault();
-    updatePage();
 })
 
 // Nutrition submit with Ajax call for nutrional facts
