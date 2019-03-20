@@ -3,7 +3,7 @@
 
 [logo]: assets\Images\loose-kitchen-logo-small.png
 
-ALT-H2 The Loose Kitchen  
+The Loose Kitchen  
 ======
 This application allows the user to input loose ingredients from their kitchen to recieve a recipe AND the ability to check the nutritional values of the recipe!  
 ======
@@ -14,7 +14,8 @@ To Begin:
 * Copy and paste the ingredient list into Get Nutrional Facts list then press GET NUTRITION button 
 * Nutrional facts can be found under the get nutrion input 
 ======
-[Visit Our Deployed Page](https://vguercio10.github.io/Group-Project-1/)
+[Visit Our Deployed Page]
+(https://vguercio10.github.io/Group-Project-1/)
 
 
 
