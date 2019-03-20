@@ -1,18 +1,5 @@
-// Initialize Firebase
-var config = {
-    apiKey: "AIzaSyDGCTv9tkR6r9w-0P9Gz__Xi1FHnAkTAXU",
-    authDomain: "loose-cooking.firebaseapp.com",
-    databaseURL: "https://loose-cooking.firebaseio.com",
-    projectId: "loose-cooking",
-    storageBucket: "loose-cooking.appspot.com",
-    messagingSenderId: "535521502364"
-};
-firebase.initializeApp(config);
-var database = firebase.database();
-
 // Global variables 
 var ingredients = [];
-var recipes = [];
 var embedURL;
 var cals = 0;
 var tFat = 0;
@@ -33,18 +20,15 @@ $("#add-button").click(function(){
 // Ingredient submit button with Ajax call for recipes, Firebase for last recipe searched
 $("#ingredient-submit").click(function(event){
     $.ajax({
-        url: "https://www.food2fork.com/api/search?key=2f1201dc25f3e453a5c909d94d149d44&q=" + ingredients,
+        url: "https://www.food2fork.com/api/search?key=2fc5dc648a9fa4bf4617a8413d55e581&q=" + ingredients,
         dataType: "json",
         method: "GET"
     }).then(function (food2fork) {
+        console.log(food2fork);
         embedURL = food2fork.recipes[0].f2f_url;
-        recipes = food2fork.recipes;
         $("#recipe-image").attr("src", embedURL);
         $("#recipe-image").attr("height", "700px");
         $("#recipe-image").attr("width", "100%");
-        database.ref().set({
-            embedURL: embedURL
-        })
     })
     event.preventDefault();
     updatePage();
@@ -95,17 +79,3 @@ $("#nutrition-submit").click(function (event) {
         ingredients = [];
   });
 })
-
-// Diplay for embeded URL
-function updatePage() {
-    database.ref().on("value", function(snapshot){
-        let embedURL = snapshot.val().embedURL;
-        $("#recipe-image").attr("src", embedURL);
-        $("#recipe-image").attr("height", "700px");
-        $("#recipe-image").attr("width", "100%");
-    })  
-}
-
-setTimeout(function () {
-    updatePage();
-}, 1000);
